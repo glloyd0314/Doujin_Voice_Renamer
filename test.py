@@ -10,7 +10,7 @@ import os
 import json
 
 # 默认配置
-template = 'workno [circle] title (cv)'  # 默认命名模板
+template = 'workno title [circle] [cv]'  # 默认命名模板
 replace_rules = []  # 替换规则
 
 RJ_WEBPATH = 'https://www.dlsite.com/maniax/work/=/product_id/'
@@ -244,10 +244,10 @@ try:
             else:
                 text.insert(tk.END, "**模板格式错误: 模板中必须包含\"workno\"!\n")
                 text.insert(tk.END, "  使用默认命名模板:\n")
-                text.insert(tk.END, "  workno [circle] title (cv)\n\n")
+                text.insert(tk.END, "  workno title [circle] [cv]\n\n")
         else:
             text.insert(tk.END, "**使用默认命名模板:\n")
-            text.insert(tk.END, "  workno [circle] title (cv)\n\n")
+            text.insert(tk.END, "  workno title [circle] [cv]\n\n")
 
         if config["replace_rules"] and type(config["replace_rules"]) == list and len(config["replace_rules"]):
             replace_rules = config["replace_rules"]
@@ -258,7 +258,7 @@ except os.error as err:
         json.dump({'template': '', "replace_rules": []}, f, ensure_ascii=False, sort_keys=True,
                   indent=4, separators=(',', ': '))
     text.insert(tk.END, "**使用默认命名模板:\n")
-    text.insert(tk.END, "  workno [circle] title (cv)\n")
+    text.insert(tk.END, "  workno title [circle] [cv]\n")
 
 var1 = tk.IntVar()  # 定义var1整型变量用来存放选择行为返回值
 cbtn = tk.Checkbutton(root, text='去除title中【】之间的内容', variable=var1,
